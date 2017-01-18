@@ -8,11 +8,12 @@ namespace EntitiesLayer
 {
     public class EntityObject
     {
+        static private int _compteur = 0;
         public int ID { get; set; }
 
-        public EntityObject(int id)
+        public EntityObject()
         {
-            ID = id;
+            ID = _compteur++;
         }
 
         public override bool Equals(object obj)

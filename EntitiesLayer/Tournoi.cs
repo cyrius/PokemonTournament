@@ -11,9 +11,9 @@ namespace EntitiesLayer
         public List<Match> Matchs { get; set; }
         public string Nom { get; set; }
 
-        public Tournoi(int id) : base(id)
+        public Tournoi(string nom)
         {
-              
+            Nom = nom;
         }
     }
 }
