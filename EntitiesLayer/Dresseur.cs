@@ -18,9 +18,14 @@ namespace EntitiesLayer
 
         public int Score { get; set; }
 
-        public Dresseur(int id) : base(id)
+        public Dresseur(string nom)
         {
-
+            _nom = nom;
+            Score = 0;
+        }
+        public override string ToString()
+        {
+            return "Dresseur : " + Nom + " | score : " + Score + " points";
         }
     }
 }
