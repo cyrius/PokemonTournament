@@ -43,7 +43,7 @@ namespace StubDataAccessLayer
         {
             return listPkm.FindAll(p => p.Type == type);
         }
-        public List<Match> GetAllMatches()
+        public List<Match> GetAllMatchs()
         {
             return listMatch;
         }
