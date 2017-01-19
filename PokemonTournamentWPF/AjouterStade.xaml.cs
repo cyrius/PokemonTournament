@@ -53,6 +53,7 @@ namespace PokemonTournamentWPF
                 if (Int32.TryParse(TBNbPlaces.Text, out nbPlaces))
                 {
                     businessManager.AjouterStade(new Stade(nbPlaces, TBNom.Text, (ETypeElement)CBElement.SelectedItem));
+                    mainWindow.GridData.ItemsSource = null;
                     mainWindow.GridData.ItemsSource = businessManager.GetAllStades();
                     this.Close();
                 }
