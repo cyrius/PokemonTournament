@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BusinessLayer;
+using EntitiesLayer;
 
 namespace PokemonTournamentWPF
 {
@@ -85,6 +86,60 @@ namespace PokemonTournamentWPF
                 default:
                     break;
             }          
+        }
+
+        private void Button_Supprimer_Click(object sender, RoutedEventArgs e)
+        {
+            switch (dataAfficher)
+            {
+                case "Pokemon":
+
+                    break;
+                case "Carac":
+
+                    break;
+                case "Stade":
+                    businessManager.SupprimerStade((Stade)GridData.SelectedItem);
+                    GridData.ItemsSource = null;
+                    GridData.ItemsSource = businessManager.GetAllStades();
+                    break;
+                case "BtnMatchs":
+
+                    break;
+                case "Match":
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Button_Modifier_Click(object sender, RoutedEventArgs e)
+        {
+            switch (dataAfficher)
+            {
+                case "Pokemon":
+
+                    break;
+                case "Carac":
+
+                    break;
+                case "Stade":
+                    ModifierStade modifierStadeView = new ModifierStade(businessManager, this, (Stade)GridData.SelectedItem);
+                    modifierStadeView.Show();
+                    break;
+                case "BtnMatchs":
+
+                    break;
+                case "Match":
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ButtonImprimer_Click(object sender, RoutedEventArgs e)
+        {
+            ///TODO lié au fonction impression
         }
     }
 }
