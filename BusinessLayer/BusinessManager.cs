@@ -73,6 +73,16 @@ namespace BusinessLayer
             dalManager.AjouterStade(stade);
         }
 
+        public void SupprimerStade(Stade stade)
+        {
+            dalManager.SupprimerStade(stade);
+        }
+
+        public void ModifierStade(Stade stade, String nom, int nbPlaces, ETypeElement element)
+        {
+            dalManager.ModifierStade(stade, nom, nbPlaces, element);
+        }
+
         public static bool CheckConnexionUser(string username, string password)
         {
             Utilisateur user = DalManager.GetUtilisateurByLogin(username);

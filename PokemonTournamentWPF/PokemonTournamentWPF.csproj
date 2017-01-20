@@ -78,7 +78,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Manager.xaml">
+    <Page Include="ModifierStade.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,8 +87,8 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager.xaml.cs">
-      <DependentUpon>Manager.xaml</DependentUpon>
+    <Compile Include="ModifierStade.xaml.cs">
+      <DependentUpon>ModifierStade.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

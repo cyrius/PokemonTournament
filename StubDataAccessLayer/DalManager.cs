@@ -67,11 +67,23 @@ namespace StubDataAccessLayer
             listStade.Add(stade);
         }
 
+        public void SupprimerStade(Stade stade)
+        {
+            listStade.Remove(stade);
+        }
+
+        public void ModifierStade(Stade stade, string nom, int nbPlaces, ETypeElement element)
+        {
+            stade.Nom = nom;
+            stade.NbPlaces = nbPlaces;
+            stade.Element = element;
+        }
+
         public static Utilisateur GetUtilisateurByLogin(string login)
         {
             return listUser.Find(u => u.Login.ToLower() == login.ToLower());
         }
 
-
+       
     }
 }
