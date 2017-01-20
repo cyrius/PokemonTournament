@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BusinessLayer;
+using EntitiesLayer;
+using System.Collections.ObjectModel;
 
 namespace PokemonTournamentWPF
 {
@@ -30,15 +32,28 @@ namespace PokemonTournamentWPF
         private void Gestion_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
+            ObservableCollection<EntityObject> listNom = new ObservableCollection<EntityObject>();
+
             switch (b.Name)
             {
                 case "btn_GestStades":
-                    AjouterStade fs = new AjouterStade(manager);
-                    fs.Show();
+                    listNom = manager.GetAllStades();                  
+                    break;
+                case "btn_GestTournoi":
+
+                    break;
+                case "btn_GestPokemon":
+                    listNom = manager.GetAllPokemons();
+                    break;
+                case "btn_GestMatch":
+                    listNom = manager.GetAllMatchs();
                     break;
                 default:
                     break;
             }
+
+            GestionView gv = new GestionView(manager,listNom);
+            gv.Show();
         }
     }
 }

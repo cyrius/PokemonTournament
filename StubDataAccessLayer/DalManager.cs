@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntitiesLayer;
+using System.Collections.ObjectModel;
 
 namespace StubDataAccessLayer
 {
@@ -77,6 +78,13 @@ namespace StubDataAccessLayer
             stade.Nom = nom;
             stade.NbPlaces = nbPlaces;
             stade.Element = element;
+        }
+
+        public void SupprimerEntity(int id)
+        {
+            listStade.Remove(listStade.Find(s => s.ID == id));
+            listPkm.Remove(listPkm.Find(s => s.ID == id));
+            listMatch.Remove(listMatch.Find(s => s.ID == id));
         }
 
         public static Utilisateur GetUtilisateurByLogin(string login)
