@@ -36,6 +36,7 @@ namespace EntitiesLayer
 
     public enum ETypeElement
     {
+        Aucun,
         Eau,
         Feu,
         Terre,

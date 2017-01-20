@@ -21,6 +21,7 @@ namespace PokemonTournamentWPF
     public partial class MainWindow : Window
     {
         BusinessManager businessManager = new BusinessManager();
+        String dataAfficher = "";
 
         public MainWindow()
         {
@@ -30,20 +31,30 @@ namespace PokemonTournamentWPF
         public void btn_Click(object s, EventArgs e)
         {
             Button btn = (Button)s;
-            
-            switch(btn.Name)
+
+            ButtonAjouter.Visibility = Visibility.Visible;
+
+            switch (btn.Name)
             {
                 case "BtnPokemons":
+                    dataAfficher = "Pokemon";
                     GridData.ItemsSource = businessManager.GetAllPokemons();
+                    ButtonAjouter.Content = "Ajouter un pokemon";
                     break;
                 case "BtnCaracs":
+                    dataAfficher = "Carac";
                     GridData.ItemsSource = businessManager.GetAllCaracteristique();
+                    ButtonAjouter.Content = "Ajouter une caracteristique";
                     break;
                 case "BtnStades":
+                    dataAfficher = "Stade";
                     GridData.ItemsSource = businessManager.GetAllStades();
+                    ButtonAjouter.Content = "Ajouter un stade";        
                     break;
                 case "BtnMatchs":
+                    dataAfficher = "Match";
                     GridData.ItemsSource = businessManager.GetAllMatchs();
+                    ButtonAjouter.Content = "Ajouter un match";
                     break;
                 case "BtnBonus":
                     break;
@@ -52,5 +63,28 @@ namespace PokemonTournamentWPF
             }
         }
 
+        private void Button_Ajouter_Click(object sender, RoutedEventArgs e)
+        {
+            switch (dataAfficher)
+            {
+                case "Pokemon":
+                    
+                    break;
+                case "Carac":
+                   
+                    break;
+                case "Stade":
+                    AjouterStade asWindow = new AjouterStade(businessManager,this);
+                    asWindow.Show();
+                    break;
+                case "BtnMatchs":
+                   
+                    break;
+                case "Match":
+                    break;
+                default:
+                    break;
+            }          
+        }
     }
 }

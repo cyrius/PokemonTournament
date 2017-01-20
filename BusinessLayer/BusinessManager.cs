@@ -68,6 +68,10 @@ namespace BusinessLayer
             return dalManager.GetAllCaracteristiques();
         }
 
+        public void AjouterStade(Stade stade)
+        {
+            dalManager.AjouterStade(stade);
+        }
 
         public static bool CheckConnexionUser(string username, string password)
         {
