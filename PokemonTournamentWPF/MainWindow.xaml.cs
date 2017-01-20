@@ -37,10 +37,13 @@ namespace PokemonTournamentWPF
                     GridData.ItemsSource = businessManager.GetAllPokemons();
                     break;
                 case "BtnCaracs":
+                    GridData.ItemsSource = businessManager.GetAllCaracteristique();
                     break;
                 case "BtnStades":
+                    GridData.ItemsSource = businessManager.GetAllStades();
                     break;
                 case "BtnMatchs":
+                    GridData.ItemsSource = businessManager.GetAllMatchs();
                     break;
                 case "BtnBonus":
                     break;

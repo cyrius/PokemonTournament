@@ -14,9 +14,24 @@ namespace EntitiesLayer
         public Pokemon Pokemon2 { get; set; }
         public Stade Stade { get; set; }
 
-        public Match()
+        //Obligé de surcharger le constructeur si on veut faire
+        // Match match = new Match(new Pokemon(...), new Pokemon(...)) ?
+        public Match(ref Pokemon pokemon1, ref Pokemon pokemon2, EPhaseTournoi phase = EPhaseTournoi.QuartFinale)
         {
+            PhaseTournoi = phase;
+            Pokemon1 = pokemon1;
+            Pokemon2 = pokemon2;
+        }
+        public Match(Pokemon pokemon1, Pokemon pokemon2, EPhaseTournoi phase = EPhaseTournoi.QuartFinale)
+        {
+            PhaseTournoi = phase;
+            Pokemon1 = pokemon1;
+            Pokemon2 = pokemon2;
+        }
 
+        public override String ToString()
+        {
+            return "Match : " + Pokemon1.Nom + " VS " + Pokemon2.Nom + " . IDVainqueur = " + IdPokemonVainqueur;
         }
     }
 

@@ -28,10 +28,10 @@ namespace StubDataAccessLayer
 
         private void loadFakeData()
         {
-            listPkm.Add(new Pokemon(1, "DracoFeu", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Feu));
-            listPkm.Add(new Pokemon(1, "Tortank", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Eau));
-            listPkm.Add(new Pokemon(1, "Florizarre", new Caracteristiques(10, 5, 5, 5, 5, 5), ETypeElement.Plante));
-            listPkm.Add(new Pokemon(1, "PIKACHU", new Caracteristiques(100, 10, 10, 10, 10, 10), ETypeElement.Terre));
+            listPkm.Add(new Pokemon("DracoFeu", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Feu));
+            listPkm.Add(new Pokemon("Tortank", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Eau));
+            listPkm.Add(new Pokemon("Florizarre", new Caracteristiques(10, 5, 5, 5, 5, 5), ETypeElement.Plante));
+            listPkm.Add(new Pokemon("PIKACHU", new Caracteristiques(100, 10, 10, 10, 10, 10), ETypeElement.Terre));
              
         }
 
@@ -43,7 +43,7 @@ namespace StubDataAccessLayer
         {
             return listPkm.FindAll(p => p.Type == type);
         }
-        public List<Match> GetAllMatches()
+        public List<Match> GetAllMatchs()
         {
             return listMatch;
         }

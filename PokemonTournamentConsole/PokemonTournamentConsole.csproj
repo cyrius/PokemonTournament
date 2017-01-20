@@ -49,6 +49,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{b0cab4e8-dad8-4018-8580-5f53e5857630}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntitiesLayer\EntitiesLayer.csproj">
+      <Project>{81aeb68a-84bc-4a65-aefa-1d3170198d61}</Project>
+      <Name>EntitiesLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

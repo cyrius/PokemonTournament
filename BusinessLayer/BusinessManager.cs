@@ -59,6 +59,14 @@ namespace BusinessLayer
         {
             return dalManager.GetAllPokemons();
         }
+        public List<Match> GetAllMatchs()
+        {
+            return dalManager.GetAllMatchs();
+        }
+        public List<Caracteristiques> GetAllCaracteristique()
+        {
+            return dalManager.GetAllCaracteristiques();
+        }
 
 
         public static bool CheckConnexionUser(string username, string password)

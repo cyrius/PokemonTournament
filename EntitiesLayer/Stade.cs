@@ -13,9 +13,22 @@ namespace EntitiesLayer
         public int NbPlaces { get; set; }
         public string Nom { get; set; }
 
-        public Stade(int id) : base(id)
+        public Stade(int nbPlace, String nom)
         {
-
+            Caracteristiques = null;
+            NbPlaces = nbPlace;
+            Nom = nom;
+        }
+        public Stade(int nbPlace, string nom, Caracteristiques caract, int value)
+        {
+            Caracteristiques = caract;
+            //Stade sans effet particulier par defaut
+            NbPlaces = nbPlace;
+            Nom = nom;
+        }
+        public override string ToString()
+        {
+            return "Stade : " + Nom + " disposant de " + NbPlaces + " places";
         }
     }
 }

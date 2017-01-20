@@ -13,11 +13,23 @@ namespace EntitiesLayer
         public ETypeElement Type { get; set; }
         public Caracteristiques Caracteristiques { get; set; }
 
-        public Pokemon(int id, string nom, Caracteristiques carac, ETypeElement type) : base(id)
+        public Pokemon(string nom, Caracteristiques carac, ETypeElement type)
         {
             Nom = nom;
             Caracteristiques = carac;
             Type = type;
+        }
+
+        public Pokemon(string nom, ETypeElement elem)
+        {
+            Caracteristiques = null;
+            Nom = nom;
+            Type = elem;
+        }
+
+        public override String ToString()
+        {
+            return "Je m'appelle " + Nom + " et je suis de type " + Type + ". Mon identifiant est " + ID;
         }
 
     }
@@ -29,6 +41,7 @@ namespace EntitiesLayer
         Terre,
         Insecte,
         Plante,
+        Tonnerre,
         Sol,
     }
 }
