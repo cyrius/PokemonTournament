@@ -23,6 +23,7 @@ namespace PokemonTournamentWPF
     public partial class Manager : Window
     {
         BusinessManager manager;
+        GestionView gestionView;
         public Manager()
         {
             manager = new BusinessManager();
@@ -32,28 +33,28 @@ namespace PokemonTournamentWPF
         private void Gestion_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
-            ObservableCollection<EntityObject> listNom = new ObservableCollection<EntityObject>();
+            if (gestionView == null)
+                gestionView = new GestionView(manager);
 
             switch (b.Name)
             {
                 case "btn_GestStades":
-                    listNom = manager.GetAllStades();                  
+                    gestionView.ListNom = manager.GetAllStades();                  
                     break;
                 case "btn_GestTournoi":
 
                     break;
                 case "btn_GestPokemon":
-                    listNom = manager.GetAllPokemons();
+                    gestionView.ListNom = manager.GetAllPokemons();
                     break;
                 case "btn_GestMatch":
-                    listNom = manager.GetAllMatchs();
+                    gestionView.ListNom = manager.GetAllMatchs();
                     break;
                 default:
                     break;
             }
-
-            GestionView gv = new GestionView(manager,listNom);
-            gv.Show();
+           
+            gestionView.Show();
         }
     }
 }

@@ -22,12 +22,10 @@ namespace PokemonTournamentWPF
     public partial class AjouterStade : Window
     {
         BusinessManager businessManager;
-        MainWindow mainWindow;
 
-        public AjouterStade(BusinessManager bm, MainWindow mw)
+        public AjouterStade(BusinessManager bm)
         {
             businessManager = bm;
-            mainWindow = mw;
             InitializeComponent();
             CBElement.ItemsSource = Enum.GetValues(typeof(ETypeElement));
             CBElement.SelectedIndex = 0;
@@ -53,8 +51,7 @@ namespace PokemonTournamentWPF
                 if (Int32.TryParse(TBNbPlaces.Text, out nbPlaces))
                 {
                     businessManager.AjouterStade(new Stade(nbPlaces, TBNom.Text, (ETypeElement)CBElement.SelectedItem));
-                    mainWindow.GridData.ItemsSource = null;
-                    mainWindow.GridData.ItemsSource = businessManager.GetAllStades();
+                    
                     this.Close();
                 }
                 else

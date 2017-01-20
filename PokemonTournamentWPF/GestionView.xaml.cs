@@ -40,10 +40,9 @@ namespace PokemonTournamentWPF
             }
         }
 
-        public GestionView(BusinessManager manager, ObservableCollection<EntityObject> listnom)
+        public GestionView(BusinessManager manager)
         {
             InitializeComponent();
-            listNom = listnom;
             businessManager = manager;
             this.DataContext = this;
         }
