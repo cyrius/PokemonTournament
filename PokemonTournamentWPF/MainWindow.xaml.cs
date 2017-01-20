@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BusinessLayer;
+using EntitiesLayer;
+using System.Xml.Serialization;
+using Microsoft.Win32;
+using System.IO;
 
 namespace PokemonTournamentWPF
 {
@@ -74,7 +78,7 @@ namespace PokemonTournamentWPF
                    
                     break;
                 case "Stade":
-                    AjouterStade asWindow = new AjouterStade(businessManager,this);
+                    AjouterStade asWindow = new AjouterStade(businessManager);
                     asWindow.Show();
                     break;
                 case "BtnMatchs":
@@ -86,5 +90,19 @@ namespace PokemonTournamentWPF
                     break;
             }          
         }
+
+        private void ExportPokemon()
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(List<Pokemon>));
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.ShowDialog();
+
+            if(sfd.FileName != "")
+            {
+                TextWriter tw = new StreamWriter(sfd.FileName);
+                ser.Serialize(tw , businessManager.GetAllPokemons());
+            }
+        }
+
     }
 }

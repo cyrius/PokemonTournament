@@ -10,33 +10,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BusinessLayer;
 
 namespace PokemonTournamentWPF
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour Manager.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Manager : Window
     {
-        public Login()
+        BusinessManager manager;
+        public Manager()
         {
+            manager = new BusinessManager();
             InitializeComponent();
         }
 
-        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        private void Gestion_Click(object sender, RoutedEventArgs e)
         {
-
-            if( true || BusinessManager.CheckConnexionUser(TBLogin.Text, TBPassword.Password))
+            Button b = (Button)sender;
+            switch (b.Name)
             {
-                MainWindow win = new MainWindow();
-                //win.Show();
-                Manager m = new Manager();
-                m.Show();
-
-                this.Close();
+                case "btn_GestStades":
+                    AjouterStade fs = new AjouterStade(manager);
+                    fs.Show();
+                    break;
+                default:
+                    break;
             }
         }
     }
