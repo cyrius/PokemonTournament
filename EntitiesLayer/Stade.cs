@@ -8,7 +8,7 @@ namespace EntitiesLayer
 {
     public class Stade : EntityObject
     {
-
+    
         public string Nom { get; set; }
         public ETypeElement Element { get; set; }
         public int NbPlaces { get; set; }
@@ -16,8 +16,6 @@ namespace EntitiesLayer
         public Stade(int nbPlace, String nom)
         {
             Element = ETypeElement.Aucun;
-            NbPlaces = nbPlace;
-            Nom = nom;
             NbPlaces = nbPlace;
             Nom = nom;
         }
