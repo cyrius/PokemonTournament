@@ -105,7 +105,7 @@ namespace PokemonTournamentWPF.ViewModel
 
         private void Remove()
         {
-            if (this.SelectedItem != null) Artistes.Remove(this.SelectedItem);
+            if (this.SelectedItem != null) Stades.Remove(this.SelectedItem);
         }
 
         // Commande Close

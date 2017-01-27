@@ -6,18 +6,19 @@
         xmlns:local="clr-namespace:PokemonTournamentWPF"
         mc:Ignorable="d"
         Title="GestionView" Height="500" Width="700"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="215*"/>
+            <ColumnDefinition Width="461*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <ListBox Name="LBEntity" ItemsSource="{Binding Path=ListNom}" Height="Auto" Width="Auto" Margin="10">
+        <ListBox Name="LBEntity" ItemsSource="{Binding Path=ListNom}" Height="Auto" Width="Auto" Margin="10" Grid.ColumnSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -26,9 +27,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Annuler" Grid.Column="1" Grid.Row="1" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30"/>
-        <Button Content="Valider" Visibility="Collapsed" Grid.Column="1" Grid.Row="1" Width="120" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30"/>
-        <Button Content="Supprimer" Grid.Column="1" Grid.Row="1" Width="120" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="30" Click="Button_Click_Supprimer"/>
+        <Button Content="Annuler" Grid.Column="2" Grid.Row="1" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,22,0,22"/>
+        <Button Content="Valider" Visibility="Collapsed" Grid.Column="2" Grid.Row="1" Width="120" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="171,22,170,22"/>
+        <Button Content="Supprimer" Grid.Column="2" Grid.Row="1" Width="120" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,22,30,22" Click="Button_Click_Supprimer"/>
 
     </Grid>
 </Window>
