@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StubDataAccessLayer;
 using EntitiesLayer;
+using System.Collections.ObjectModel;
 
 namespace BusinessLayer
 {
@@ -23,7 +24,7 @@ namespace BusinessLayer
 
         public List<string> DisplaStadesSupPlaces(int placeMin)
         {
-            return dalManager.GetAllStades().Where( s => s.NbPlaces >= placeMin ).Select(s => s.ToString()).ToList();
+            return dalManager.GetAllStades().Where(s => s.NbPlaces >= placeMin ).Select(s => s.ToString()).ToList();
         }
 
         public List<string> DisplayPokemonByType(ETypeElement type)
@@ -36,9 +37,24 @@ namespace BusinessLayer
             return dalManager.GetAllPokemons().Where( p => p.Caracteristiques.PV >= 50 && p.Caracteristiques.Atk >= 3).Select( p => p.ToString()).ToList();
         }
 
-        public List<Stade> GetAllStades()
+        public ObservableCollection<EntityObject> GetAllStades()
         {
-            return dalManager.GetAllStades();
+            ObservableCollection<EntityObject> listStadeEntity = new ObservableCollection<EntityObject>();
+            foreach (Stade stade in dalManager.GetAllStades())
+            {
+                listStadeEntity.Add(stade);
+            }
+            return listStadeEntity;
+        }
+
+        public ObservableCollection<EntityObject> GetAllTournois()
+        {
+            ObservableCollection<EntityObject> listTournoisEntity = new ObservableCollection<EntityObject>();
+            foreach (Tournoi tournoi in dalManager.GetAllTournois())
+            {
+                listTournoisEntity.Add(tournoi);
+            }
+            return listTournoisEntity;
         }
 
         public List<Stade> GetStadesSupPlaces(int placeMin)
@@ -55,13 +71,25 @@ namespace BusinessLayer
         {
             return dalManager.GetAllPokemons().FindAll(p => p.Caracteristiques.PV >= 50 && p.Caracteristiques.Atk >= 3);
         }
-        public List<Pokemon> GetAllPokemons()
+
+        public ObservableCollection<EntityObject> GetAllPokemons()
         {
-            return dalManager.GetAllPokemons();
+            ObservableCollection<EntityObject> listPokemonEntity = new ObservableCollection<EntityObject>();
+            foreach (Pokemon pok in dalManager.GetAllPokemons())
+            {
+                listPokemonEntity.Add(pok);
+            }
+            return listPokemonEntity;
         }
-        public List<Match> GetAllMatchs()
+
+        public ObservableCollection<EntityObject> GetAllMatchs()
         {
-            return dalManager.GetAllMatchs();
+            ObservableCollection<EntityObject> listMatchEntity = new ObservableCollection<EntityObject>();
+            foreach (Match match in dalManager.GetAllMatchs())
+            {
+                listMatchEntity.Add(match);
+            }
+            return listMatchEntity;
         }
         public List<Caracteristiques> GetAllCaracteristique()
         {
@@ -81,6 +109,12 @@ namespace BusinessLayer
         public void ModifierStade(Stade stade, String nom, int nbPlaces, ETypeElement element)
         {
             dalManager.ModifierStade(stade, nom, nbPlaces, element);
+        }
+
+        public void SupprimerEntity(EntityObject aSupprimer)
+        {
+            if (aSupprimer != null)
+                dalManager.SupprimerEntity(aSupprimer.ID);
         }
 
         public static bool CheckConnexionUser(string username, string password)

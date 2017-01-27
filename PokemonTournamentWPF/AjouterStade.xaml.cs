@@ -40,8 +40,10 @@ namespace PokemonTournamentWPF
         {
             bool textblockIsEmpty = false;
             if (TBNom.Text == "") textblockIsEmpty = true;
-            else if (TBNbPlaces.Text == "") textblockIsEmpty = true;
-            
+            else
+            {
+                if (TBNbPlaces.Text == "") textblockIsEmpty = true;
+            }
 
             if (!textblockIsEmpty)
             {
@@ -49,6 +51,7 @@ namespace PokemonTournamentWPF
                 if (Int32.TryParse(TBNbPlaces.Text, out nbPlaces))
                 {
                     businessManager.AjouterStade(new Stade(nbPlaces, TBNom.Text, (ETypeElement)CBElement.SelectedItem));
+                    
                     this.Close();
                 }
                 else
