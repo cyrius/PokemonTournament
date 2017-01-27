@@ -16,13 +16,13 @@ namespace EntitiesLayer
 
         //Obligé de surcharger le constructeur si on veut faire
         // Match match = new Match(new Pokemon(...), new Pokemon(...)) ?
-        public Match(string nom, ref Pokemon pokemon1, ref Pokemon pokemon2, EPhaseTournoi phase = EPhaseTournoi.QuartFinale) : base(nom)
-        {
+        public Match(ref Pokemon pokemon1, ref Pokemon pokemon2, EPhaseTournoi phase = EPhaseTournoi.QuartFinale) : base(pokemon1.Nom.ToString() + " VS " + pokemon2.Nom.ToString())
+        {         
             PhaseTournoi = phase;
             Pokemon1 = pokemon1;
             Pokemon2 = pokemon2;
         }
-        public Match(string nom, Pokemon pokemon1, Pokemon pokemon2, EPhaseTournoi phase = EPhaseTournoi.QuartFinale) : base(nom)
+        public Match(Pokemon pokemon1, Pokemon pokemon2, EPhaseTournoi phase = EPhaseTournoi.QuartFinale) : base(pokemon1.Nom.ToString() + " VS " + pokemon2.Nom.ToString())
         {
             PhaseTournoi = phase;
             Pokemon1 = pokemon1;

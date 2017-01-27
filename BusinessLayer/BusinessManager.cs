@@ -47,6 +47,16 @@ namespace BusinessLayer
             return listStadeEntity;
         }
 
+        public ObservableCollection<EntityObject> GetAllTournois()
+        {
+            ObservableCollection<EntityObject> listTournoisEntity = new ObservableCollection<EntityObject>();
+            foreach (Tournoi tournoi in dalManager.GetAllTournois())
+            {
+                listTournoisEntity.Add(tournoi);
+            }
+            return listTournoisEntity;
+        }
+
         public List<Stade> GetStadesSupPlaces(int placeMin)
         {
             return dalManager.GetAllStades().FindAll(s => s.NbPlaces >= placeMin);

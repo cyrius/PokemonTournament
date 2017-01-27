@@ -15,6 +15,7 @@ namespace StubDataAccessLayer
         private List<Match> listMatch;
         private List<Stade> listStade;
         private List<Caracteristiques> listCarac;
+        private List<Tournoi> listTournoi;
         private static List<Utilisateur> listUser =  new List<Utilisateur>() { new Utilisateur("test", "test", "test", "test")};
 
         public DalManager()
@@ -23,14 +24,17 @@ namespace StubDataAccessLayer
             listMatch = new List<Match>();
             listStade = new List<Stade>();
             listCarac = new List<Caracteristiques>();
+            listTournoi = new List<Tournoi>();
             //listUser = new List<Utilisateur>();
             loadFakeData();
         }
 
         private void loadFakeData()
         {
-            listPkm.Add(new Pokemon("DracoFeu", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Feu));
-            listPkm.Add(new Pokemon("Tortank", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Eau));
+            Pokemon pok1 = new Pokemon("DracoFeu", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Feu);
+            Pokemon pok2 = new Pokemon("Tortank", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Eau);
+            listPkm.Add(pok1);
+            listPkm.Add(pok2);
             listPkm.Add(new Pokemon("Florizarre", new Caracteristiques(10, 5, 5, 5, 5, 5), ETypeElement.Plante));
             listPkm.Add(new Pokemon("PIKACHU", new Caracteristiques(100, 10, 10, 10, 10, 10), ETypeElement.Terre));
 
@@ -39,6 +43,9 @@ namespace StubDataAccessLayer
             listStade.Add(new Stade(12000, "JardinArena", ETypeElement.Plante));
             listStade.Add(new Stade(10000, "BoueArena", ETypeElement.Terre));
 
+            listTournoi.Add(new Tournoi("PlopTournament"));
+
+            listMatch.Add(new Match(pok1, pok2, EPhaseTournoi.Finale));
         }
 
         public List<Pokemon> GetAllPokemons()
@@ -49,6 +56,12 @@ namespace StubDataAccessLayer
         {
             return listPkm.FindAll(p => p.Type == type);
         }
+
+        public List<Tournoi> GetAllTournois()
+        {
+            return listTournoi;
+        }
+
         public List<Match> GetAllMatchs()
         {
             return listMatch;
