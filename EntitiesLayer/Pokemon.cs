@@ -9,21 +9,18 @@ namespace EntitiesLayer
     [Serializable]
     public class Pokemon : EntityObject
     {
-        public string Nom { get; set; }
         public ETypeElement Type { get; set; }
         public Caracteristiques Caracteristiques { get; set; }
 
-        public Pokemon(string nom, Caracteristiques carac, ETypeElement type)
+        public Pokemon(string nom, Caracteristiques carac, ETypeElement type) : base(nom)
         {
-            Nom = nom;
             Caracteristiques = carac;
             Type = type;
         }
 
-        public Pokemon(string nom, ETypeElement elem)
+        public Pokemon(string nom, ETypeElement elem) : base(nom)
         {
             Caracteristiques = null;
-            Nom = nom;
             Type = elem;
         }
 

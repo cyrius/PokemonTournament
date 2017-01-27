@@ -9,11 +9,10 @@ namespace EntitiesLayer
     public class Tournoi : EntityObject
     {
         public List<Match> Matchs { get; set; }
-        public string Nom { get; set; }
 
-        public Tournoi(string nom)
+        public Tournoi(string nom) : base (nom)
         {
-            Nom = nom;
+
         }
     }
 }

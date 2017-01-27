@@ -10,10 +10,12 @@ namespace EntitiesLayer
     {
         static private int _compteur = 0;
         public int ID { get; set; }
+        public string Nom { get; set; }
 
-        public EntityObject()
+        public EntityObject(string nom)
         {
             ID = _compteur++;
+            Nom = nom;
         }
 
         public override bool Equals(object obj)

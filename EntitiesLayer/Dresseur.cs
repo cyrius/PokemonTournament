@@ -8,19 +8,11 @@ namespace EntitiesLayer
 {
     public class Dresseur : EntityObject
     {
-        private string _nom;
-
-        public string Nom
-        {
-            get { return _nom; }
-            set { _nom = value; }
-        }
 
         public int Score { get; set; }
 
-        public Dresseur(string nom)
+        public Dresseur(string nom) : base(nom)
         {
-            _nom = nom;
             Score = 0;
         }
         public override string ToString()
