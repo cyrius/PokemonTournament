@@ -11,18 +11,14 @@ namespace EntitiesLayer
     {
         public int PV { get; set; }
         public int Atk { get; set; }
-        public int AtkSpe { get; set; }
         public int Def { get; set; }
-        public int DefSpe { get; set; }
         public int Vitesse { get; set; }
 
-        public Caracteristiques(int pv, int atk, int atkspe, int def, int defspe, int vitesse)
+        public Caracteristiques(int pv, int atk, int def, int vitesse)
         {
             PV = pv;
             Atk = atk;
-            AtkSpe = atk;
             Def = def;
-            DefSpe = defspe;
             Vitesse = vitesse;
         }
 
