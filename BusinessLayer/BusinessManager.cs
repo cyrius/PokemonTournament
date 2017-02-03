@@ -12,12 +12,9 @@ namespace BusinessLayer
     public class BusinessManager
     {
         private DalManager dalManager{ get; set; }
-        private DalManagerSQL dalManagerSQL { get; set; }
-
         public BusinessManager()
         {
             dalManager = new DalManager();
-            dalManagerSQL = new DalManagerSQL();
         }
 
         public List<string> DisplaAllStades()
@@ -78,7 +75,7 @@ namespace BusinessLayer
         public ObservableCollection<EntityObject> GetAllPokemons()
         {
             ObservableCollection<EntityObject> listPokemonEntity = new ObservableCollection<EntityObject>();
-            foreach (Pokemon pok in dalManagerSQL.GetAllPokemons())
+            foreach (Pokemon pok in dalManager.GetAllPokemons())
             {
                 listPokemonEntity.Add(pok);
             }
