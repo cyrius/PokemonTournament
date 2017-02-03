@@ -69,5 +69,10 @@ namespace PokemonTournamentWPF
            
             gestionView.Show();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            gestionView.Close();
+        }
     }
 }

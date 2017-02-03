@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:PokemonTournamentWPF"
         mc:Ignorable="d"
         Title="GestionView" Height="500" Width="700"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="215*"/>
+            <ColumnDefinition Width="461*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
