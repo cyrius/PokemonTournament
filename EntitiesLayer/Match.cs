@@ -28,6 +28,46 @@ namespace EntitiesLayer
             Pokemon1 = pokemon1;
             Pokemon2 = pokemon2;
         }
+        private Pokemon JouerMatch(Pokemon pokemon1, Pokemon pokemon2, Stade stade)
+        {
+            int vie1 = pokemon1.Caracteristiques.PV;
+            int vie2 = pokemon2.Caracteristiques.PV;
+            int def1 = pokemon1.Caracteristiques.Def;
+            int def2 = pokemon2.Caracteristiques.Def;
+            int att1 = pokemon1.Caracteristiques.Atk;
+            int att2 = pokemon2.Caracteristiques.Atk;
+            int vit1 = pokemon1.Caracteristiques.Vitesse;
+            int vit2 = pokemon2.Caracteristiques.Vitesse;
+            if (pokemon1.Type == stade.Element)
+            {
+                att1 = Convert.ToInt32(att1 * 1.1);
+            }
+            if (pokemon2.Type == stade.Element)
+            {
+                att2 = Convert.ToInt32(att2 * 1.1);
+            }
+            while (vie1>0 && vie2>0)
+            {
+                if ((att2- def1) > 0)
+                {
+                    vie1 = vie1 - ((att2 - def1) * vit2);
+                }
+                if ((att1 - def2) > 0)
+                {
+                    vie2 = vie2 - ((att1 - def2) * vit1);
+                }
+            }
+            Pokemon vainqueur = null;
+            if (vie1 < vie2)
+            {
+                vainqueur = pokemon2;
+            }
+            else
+            {
+                vainqueur = pokemon1;
+            }
+            return vainqueur;
+        }
 
         public override string ToString()
         {
