@@ -13,6 +13,7 @@ namespace BusinessLayer
     {
         private DalManager dalManager{ get; set; }
 
+        private DalManagerSQL dalManagerSQL { get; set; }
 
         private static volatile BusinessManager instance;
         private static object syncRoot = new Object();       
@@ -37,6 +38,7 @@ namespace BusinessLayer
         private BusinessManager()
         {
             dalManager = new DalManager();
+            dalManagerSQL = new DalManagerSQL();
         }
 
         public List<string> DisplaAllStades()
@@ -97,7 +99,7 @@ namespace BusinessLayer
         public ObservableCollection<EntityObject> GetAllPokemons()
         {
             ObservableCollection<EntityObject> listPokemonEntity = new ObservableCollection<EntityObject>();
-            foreach (Pokemon pok in dalManager.GetAllPokemons())
+            foreach (Pokemon pok in dalManagerSQL.GetAllPokemons())
             {
                 listPokemonEntity.Add(pok);
             }
