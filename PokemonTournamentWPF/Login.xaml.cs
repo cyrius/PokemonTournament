@@ -28,8 +28,8 @@ namespace PokemonTournamentWPF
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-
-            if( true || BusinessManager.CheckConnexionUser(TBLogin.Text, TBPassword.Password))
+            BusinessManager bm = BusinessManager.Instance;
+            if( true || bm.CheckConnexionUser(TBLogin.Text, TBPassword.Password))
             {
                 Manager manager = new Manager();
                 manager.Show();

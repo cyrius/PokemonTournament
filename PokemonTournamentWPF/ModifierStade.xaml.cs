@@ -23,12 +23,10 @@ namespace PokemonTournamentWPF
     {
         private Stade stadeModifier;
         private BusinessManager businessManager;
-        private MainWindow mainWindow;
-        public ModifierStade(BusinessManager bm,MainWindow mw, Stade stadeModif)
+        public ModifierStade(BusinessManager bm, Stade stadeModif)
         {
             stadeModifier = stadeModif;
             businessManager = bm;
-            mainWindow = mw;
 
             InitializeComponent();
             TBNom.Text = stadeModifier.Nom;
@@ -57,8 +55,6 @@ namespace PokemonTournamentWPF
                 if (Int32.TryParse(TBNbPlaces.Text, out nbPlaces))
                 {
                     businessManager.ModifierStade(stadeModifier, TBNom.Text, Int32.Parse(TBNbPlaces.Text), (ETypeElement)CBElement.SelectedItem);
-                    mainWindow.GridData.ItemsSource = null;
-                    mainWindow.GridData.ItemsSource = businessManager.GetAllStades();
                     this.Close();
                 }
                 else

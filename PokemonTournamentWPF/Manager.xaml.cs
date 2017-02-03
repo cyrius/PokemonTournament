@@ -27,7 +27,7 @@ namespace PokemonTournamentWPF
     
         public Manager()
         {
-            manager = new BusinessManager();
+            manager = BusinessManager.Instance;
             InitializeComponent();
         }
 
