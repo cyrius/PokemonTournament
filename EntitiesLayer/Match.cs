@@ -22,11 +22,12 @@ namespace EntitiesLayer
             Pokemon1 = pokemon1;
             Pokemon2 = pokemon2;
         }
-        public Match(Pokemon pokemon1, Pokemon pokemon2, EPhaseTournoi phase = EPhaseTournoi.QuartFinale) : base(pokemon1.Nom.ToString() + " VS " + pokemon2.Nom.ToString())
+        public Match(Pokemon pokemon1, Pokemon pokemon2,Stade stade, EPhaseTournoi phase = EPhaseTournoi.QuartFinale) : base(pokemon1.Nom.ToString() + " VS " + pokemon2.Nom.ToString())
         {
             PhaseTournoi = phase;
             Pokemon1 = pokemon1;
             Pokemon2 = pokemon2;
+            Stade = stade;
         }
         private Pokemon JouerMatch(Pokemon pokemon1, Pokemon pokemon2, Stade stade)
         {

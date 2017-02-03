@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace StubDataAccessLayer
 {
-    interface IDal
+    public interface IDal
     {
         DataTable SelectByDataAdapter(string request);
-
+        void Delete(string request, int id);
     }
 }

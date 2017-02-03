@@ -11,9 +11,7 @@ namespace BusinessLayer
 {
     public class BusinessManager
     {
-        private DalManager dalManager{ get; set; }
-
-        private DalManagerSQL dalManagerSQL { get; set; }
+        private IDalManager dalManager { get; set; }
 
         private static volatile BusinessManager instance;
         private static object syncRoot = new Object();       
@@ -37,8 +35,8 @@ namespace BusinessLayer
 
         private BusinessManager()
         {
-            dalManager = new DalManager();
-            dalManagerSQL = new DalManagerSQL();
+            //dalManager = new DalManager();
+            dalManager = new DalManagerSQL();
         }
 
         public List<string> DisplaAllStades()
@@ -51,10 +49,6 @@ namespace BusinessLayer
             return dalManager.GetAllStades().Where(s => s.NbPlaces >= placeMin ).Select(s => s.ToString()).ToList();
         }
 
-        public List<string> DisplayPokemonByType(ETypeElement type)
-        {
-            return dalManager.GetPokemonsByType(type).Select(s => s.ToString()).ToList();
-        }
 
         public List<string> DisplayPokemonBizarre()
         {
@@ -86,10 +80,6 @@ namespace BusinessLayer
             return dalManager.GetAllStades().FindAll(s => s.NbPlaces >= placeMin);
         }
 
-        public List<Pokemon> GetPokemonByType(ETypeElement type)
-        {
-            return dalManager.GetPokemonsByType(type);
-        }
 
         public List<Pokemon> GetPokemonBizarre()
         {
@@ -99,7 +89,7 @@ namespace BusinessLayer
         public ObservableCollection<EntityObject> GetAllPokemons()
         {
             ObservableCollection<EntityObject> listPokemonEntity = new ObservableCollection<EntityObject>();
-            foreach (Pokemon pok in dalManagerSQL.GetAllPokemons())
+            foreach (Pokemon pok in dalManager.GetAllPokemons())
             {
                 listPokemonEntity.Add(pok);
             }
@@ -120,15 +110,6 @@ namespace BusinessLayer
             return dalManager.GetAllCaracteristiques();
         }
 
-        public void AjouterStade(Stade stade)
-        {
-            dalManager.AjouterStade(stade);
-        }
-
-        public void SupprimerStade(Stade stade)
-        {
-            dalManager.SupprimerStade(stade);
-        }
 
         public void ModifierStade(Stade stade, String nom, int nbPlaces, ETypeElement element)
         {

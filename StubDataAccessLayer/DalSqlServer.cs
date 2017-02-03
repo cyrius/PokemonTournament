@@ -11,12 +11,13 @@ namespace StubDataAccessLayer
     public class DalSqlServer : IDal
     {
 
-        protected string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\theo\Documents\Développement\PokemonTournament\StubDataAccessLayer\DatabasePokemon.mdf;Integrated Security = True; Connect Timeout = 30";
+        protected string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\theo\Documents\Développement\PokemonTournament\StubDataAccessLayer\DatabasePokemonTournament.mdf;Integrated Security=True";
 
         public DalSqlServer()
         {
 
         }
+
         public DataTable SelectByDataAdapter(string request)
         {
             DataTable results = new DataTable();
@@ -29,6 +30,26 @@ namespace StubDataAccessLayer
             }
 
             return results;
+        }
+
+        public void Delete(string request, int id)
+        {
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+                {
+                    sqlConnection.Open();
+                    SqlCommand sqlCommand = new SqlCommand(request, sqlConnection);
+                    sqlCommand.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    sqlCommand.CommandType = CommandType.Text;
+                    sqlCommand.ExecuteReader();
+                    sqlConnection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

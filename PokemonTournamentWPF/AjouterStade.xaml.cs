@@ -50,7 +50,8 @@ namespace PokemonTournamentWPF
                 int nbPlaces;
                 if (Int32.TryParse(TBNbPlaces.Text, out nbPlaces))
                 {
-                    businessManager.AjouterStade(new Stade(nbPlaces, TBNom.Text, (ETypeElement)CBElement.SelectedItem));
+                    //AjouterStade Deleted
+                    //businessManager.AjouterStade(new Stade(nbPlaces, TBNom.Text, (ETypeElement)CBElement.SelectedItem));
                     
                     this.Close();
                 }

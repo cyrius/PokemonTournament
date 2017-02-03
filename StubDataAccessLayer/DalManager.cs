@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace StubDataAccessLayer
 {
-    public class DalManager
+    public class DalManager : IDalManager
     {
 
         private List<Pokemon> listPkm;
@@ -38,23 +38,20 @@ namespace StubDataAccessLayer
             listPkm.Add(new Pokemon("Florizarre", new Caracteristiques(10, 5, 5, 5), ETypeElement.Plante));
             listPkm.Add(new Pokemon("PIKACHU", new Caracteristiques(100, 10, 10, 10), ETypeElement.Terre));
 
-            listStade.Add(new Stade(10000, "HotArena",ETypeElement.Feu));
+            Stade stade1 = new Stade(10000, "HotArena", ETypeElement.Feu);
+            listStade.Add(stade1);
             listStade.Add(new Stade(7000, "GoutteArena", ETypeElement.Eau));
             listStade.Add(new Stade(12000, "JardinArena", ETypeElement.Plante));
             listStade.Add(new Stade(10000, "BoueArena", ETypeElement.Terre));
 
             listTournoi.Add(new Tournoi("PlopTournament"));
 
-            listMatch.Add(new Match(pok1, pok2, EPhaseTournoi.Finale));
+            listMatch.Add(new Match(pok1, pok2, stade1, EPhaseTournoi.Finale));
         }
 
         public List<Pokemon> GetAllPokemons()
         {
             return listPkm;
-        }
-        public List<Pokemon> GetPokemonsByType(ETypeElement type)
-        {
-            return listPkm.FindAll(p => p.Type == type);
         }
 
         public List<Tournoi> GetAllTournois()
@@ -75,16 +72,6 @@ namespace StubDataAccessLayer
             return listCarac;
         }
 
-        
-        public void AjouterStade(Stade stade)
-        {
-            listStade.Add(stade);
-        }
-
-        public void SupprimerStade(Stade stade)
-        {
-            listStade.Remove(stade);
-        }
 
         public void ModifierStade(Stade stade, string nom, int nbPlaces, ETypeElement element)
         {
