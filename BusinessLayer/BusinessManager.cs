@@ -12,7 +12,29 @@ namespace BusinessLayer
     public class BusinessManager
     {
         private DalManager dalManager{ get; set; }
-        public BusinessManager()
+
+
+        private static volatile BusinessManager instance;
+        private static object syncRoot = new Object();       
+
+        public static BusinessManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                            instance = new BusinessManager();
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        private BusinessManager()
         {
             dalManager = new DalManager();
         }
@@ -117,7 +139,7 @@ namespace BusinessLayer
                 dalManager.SupprimerEntity(aSupprimer.ID);
         }
 
-        public static bool CheckConnexionUser(string username, string password)
+        public bool CheckConnexionUser(string username, string password)
         {
             Utilisateur user = DalManager.GetUtilisateurByLogin(username);
             if(user != null && user.Password == password)

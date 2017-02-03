@@ -31,12 +31,12 @@ namespace StubDataAccessLayer
 
         private void loadFakeData()
         {
-            Pokemon pok1 = new Pokemon("DracoFeu", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Feu);
-            Pokemon pok2 = new Pokemon("Tortank", new Caracteristiques(10, 1, 1, 1, 1, 1), ETypeElement.Eau);
+            Pokemon pok1 = new Pokemon("DracoFeu", new Caracteristiques(10, 1, 1, 1), ETypeElement.Feu);
+            Pokemon pok2 = new Pokemon("Tortank", new Caracteristiques(10, 1, 1, 1), ETypeElement.Eau);
             listPkm.Add(pok1);
             listPkm.Add(pok2);
-            listPkm.Add(new Pokemon("Florizarre", new Caracteristiques(10, 5, 5, 5, 5, 5), ETypeElement.Plante));
-            listPkm.Add(new Pokemon("PIKACHU", new Caracteristiques(100, 10, 10, 10, 10, 10), ETypeElement.Terre));
+            listPkm.Add(new Pokemon("Florizarre", new Caracteristiques(10, 5, 5, 5), ETypeElement.Plante));
+            listPkm.Add(new Pokemon("PIKACHU", new Caracteristiques(100, 10, 10, 10), ETypeElement.Terre));
 
             listStade.Add(new Stade(10000, "HotArena",ETypeElement.Feu));
             listStade.Add(new Stade(7000, "GoutteArena", ETypeElement.Eau));
