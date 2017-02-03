@@ -45,19 +45,23 @@ namespace PokemonTournamentWPF
                 gestionView.Closed += new EventHandler(GestionViewClosed);
             }
 
+            gestionView.container.Children.Clear();
             switch (b.Name)
             {
                 case "btn_GestStades":
-                    gestionView.ListNom = manager.GetAllStades();                  
-                    break;
-                case "btn_GestTournoi":
-                    gestionView.ListNom = manager.GetAllTournois();
+                    gestionView.ListNom = manager.GetAllStades();
+                    View.UCStade ucs = new View.UCStade();
+                    gestionView.container.Children.Add(ucs);
                     break;
                 case "btn_GestPokemon":
                     gestionView.ListNom = manager.GetAllPokemons();
+                    View.UCPokemon ucp = new View.UCPokemon();
+                    gestionView.container.Children.Add(ucp);
                     break;
                 case "btn_GestMatch":
                     gestionView.ListNom = manager.GetAllMatchs();
+                    View.UCMatch ucm = new View.UCMatch();
+                    gestionView.container.Children.Add(ucm);
                     break;
                 default:
                     break;

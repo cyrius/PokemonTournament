@@ -62,5 +62,11 @@ namespace PokemonTournamentWPF
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        private void LBEntity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(((ListBox)sender).SelectedItem != null)
+                ((UserControl)container.Children[0]).DataContext = ((ListBox)sender).SelectedItem;
+        }
     }
 }

@@ -31,9 +31,6 @@ namespace PokemonTournamentWPF
 
             if( true || BusinessManager.CheckConnexionUser(TBLogin.Text, TBPassword.Password))
             {
-                /*MainWindow win = new MainWindow();
-                win.Show();*/
-
                 Manager manager = new Manager();
                 manager.Show();
 

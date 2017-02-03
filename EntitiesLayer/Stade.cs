@@ -8,7 +8,6 @@ namespace EntitiesLayer
 {
     public class Stade : EntityObject
     {    
-        public string Nom { get; set; }
         public ETypeElement Element { get; set; }
         public int NbPlaces { get; set; }
 
@@ -16,7 +15,6 @@ namespace EntitiesLayer
         {
             Element = ETypeElement.Aucun;
             NbPlaces = nbPlace;
-            Nom = nom;
         }
         
         public Stade(int nbPlace, string nom, ETypeElement element) : base(nom)

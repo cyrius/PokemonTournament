@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using EntitiesLayer;
 
 namespace PokemonTournamentWPF.View
 {
     /// <summary>
-    /// Logique d'interaction pour UCStade.xaml
+    /// Logique d'interaction pour UCPokemon.xaml
     /// </summary>
-    public partial class UCStade : UserControl
+    public partial class UCPokemon : UserControl
     {
-        public UCStade()
+        public UCPokemon()
         {
             InitializeComponent();
         }
-        
-
     }
 }
