@@ -14,13 +14,15 @@ namespace EntitiesLayer
         {
 
         }
-        private Pokemon[] JouerTournoi(Pokemon[] tablpokemon, EPhaseTournoi phase)
+        private Pokemon[] JouerTournoi(ref Pokemon[] tablpokemon, EPhaseTournoi phase)
         {
             Pokemon[] pokevainqueur = new Pokemon[(int)((tablpokemon.Length) / 2)];
             for (int i=0; i < (tablpokemon.Length)/2; i++)
             {
                 Stade stade = BuisnessManager.getInstance.getRandomStade();
-                Match match = new Match(tablpokemon[i*2], tablpokemon[(i*2)+1], phase, stade);
+                Match match = new Match(ref tablpokemon[i*2], ref tablpokemon[(i*2)+1], phase, stade);
+                match.JouerMatch();
+                pokevainqueur[i] = match.Vainqueur;
             }
             return pokevainqueur;
         }

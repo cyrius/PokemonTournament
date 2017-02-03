@@ -24,7 +24,7 @@ namespace EntitiesLayer
             Stade = stade;
         }
 
-        private void JouerMatch()
+        public void JouerMatch()
         {
             int vie1 = Pokemon1.Caracteristiques.PV;
             int vie2 = Pokemon2.Caracteristiques.PV;
