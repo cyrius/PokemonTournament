@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PokemonTournamentWPF"
         mc:Ignorable="d"
-        Title="Gestionnaire" Height="250" Width="200">
+        Title="Gestionnaire" Height="250" Width="200"
+        Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
