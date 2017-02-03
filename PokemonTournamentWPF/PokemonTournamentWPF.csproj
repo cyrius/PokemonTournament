@@ -59,15 +59,12 @@
     <Compile Include="ViewModel\StadesVM.cs" />
     <Compile Include="ViewModel\StadeVM.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-<<<<<<< HEAD
     <Compile Include="View\UCMatch.xaml.cs">
       <DependentUpon>UCMatch.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UCPokemon.xaml.cs">
       <DependentUpon>UCPokemon.xaml</DependentUpon>
     </Compile>
-=======
->>>>>>> 1ce0bb5dbf92e0f23d58c67575ed07d7a43de6d3
     <Compile Include="View\UCStade.xaml.cs">
       <DependentUpon>UCStade.xaml</DependentUpon>
     </Compile>
@@ -105,7 +102,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
     <Page Include="View\UCMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,8 +110,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-=======
->>>>>>> 1ce0bb5dbf92e0f23d58c67575ed07d7a43de6d3
     <Page Include="View\UCStade.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
