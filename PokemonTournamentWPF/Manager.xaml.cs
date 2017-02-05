@@ -24,6 +24,7 @@ namespace PokemonTournamentWPF
     {
         BusinessManager manager;
         GestionView gestionView;
+        string gestionViewOpened = null;
     
         public Manager()
         {
@@ -34,6 +35,7 @@ namespace PokemonTournamentWPF
         private void GestionViewClosed(object sender, EventArgs e)
         {
             gestionView = null;
+            gestionViewOpened = null;
         }
 
         private void Gestion_Click(object sender, RoutedEventArgs e)
@@ -46,6 +48,7 @@ namespace PokemonTournamentWPF
             }
 
             gestionView.container.Children.Clear();
+            gestionViewOpened = b.Name;
             switch (b.Name)
             {
                 case "btn_GestStades":
@@ -62,7 +65,8 @@ namespace PokemonTournamentWPF
                     gestionView.ListNom = manager.GetAllMatchs();
                     View.UCMatch ucm = new View.UCMatch();
                     gestionView.container.Children.Add(ucm);
-                    break;
+                    break;             
+
                 default:
                     break;
             }
@@ -74,6 +78,41 @@ namespace PokemonTournamentWPF
         {
             if (gestionView != null)
                 gestionView.Close();
+        }
+
+        private void btn_Dal_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            switch(b.Name)
+            {
+                case "btn_DalStub":
+                    b.IsEnabled = false;
+                    this.btn_DalSQL.IsEnabled = true;
+                    manager.useDalStub();
+                    break;
+
+                case "btn_DalSQL":
+                    b.IsEnabled = false;
+                    this.btn_DalStub.IsEnabled = true;
+                    manager.useDalSQL();
+                    break;
+            }
+
+            switch(gestionViewOpened)
+            {
+                case "btn_GestStades":
+                    Gestion_Click(btn_GestStades, null);
+                    break;
+                case "btn_GestPokemon":
+                    Gestion_Click(btn_GestPokemon, null);
+                    break;
+                case "btn_GestMatch":
+                    Gestion_Click(btn_GestMatch, null);
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

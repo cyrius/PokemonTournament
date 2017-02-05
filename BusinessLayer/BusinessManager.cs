@@ -35,7 +35,16 @@ namespace BusinessLayer
 
         private BusinessManager()
         {
-            //dalManager = new DalManager();
+            useDalStub();
+        }
+
+        public void useDalStub()
+        {
+            dalManager = new DalManager();
+        }
+
+        public void useDalSQL()
+        {
             dalManager = new DalManagerSQL();
         }
 

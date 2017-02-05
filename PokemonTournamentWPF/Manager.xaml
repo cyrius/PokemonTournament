@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PokemonTournamentWPF"
         mc:Ignorable="d"
-        Title="Gestionnaire" Height="250" Width="200"
+        Title="Gestionnaire" Height="300" Width="200"
         Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
@@ -13,13 +13,17 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="0" Content="Gestion des Stades" Click="Gestion_Click" Name="btn_GestStades"/>
-        <Button Grid.Row="1" Content="Gestion des Pokemon" Click="Gestion_Click" Name="btn_GestPokemon"/>
-        <Button Grid.Row="2" Content="Gestion des Matches" Click="Gestion_Click" Name="btn_GestMatch"/>
-        <Button Grid.Row="3" Content="Lancer le Tournoi" Click="Gestion_Click" Name="btn_lancer"/>
+        <Button Grid.Row="0" Grid.ColumnSpan="2" Content="Gestion des Stades" Click="Gestion_Click" Name="btn_GestStades"/>
+        <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Gestion des Pokemon" Click="Gestion_Click" Name="btn_GestPokemon"/>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Gestion des Matches" Click="Gestion_Click" Name="btn_GestMatch"/>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Lancer le Tournoi" Click="Gestion_Click" Name="btn_lancer"/>
+        <Button Grid.Row="4" Content="DAL Stub" Click="btn_Dal_Click" Name="btn_DalStub"  IsEnabled="False"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="DAL SQL" Click="btn_Dal_Click" Name="btn_DalSQL"/>
     </Grid>
 </Window>
