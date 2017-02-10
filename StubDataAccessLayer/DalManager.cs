@@ -31,22 +31,22 @@ namespace StubDataAccessLayer
 
         private void loadFakeData()
         {
-            Pokemon pok1 = new Pokemon("DracoFeu", new Caracteristiques(10, 1, 1, 1), ETypeElement.Feu);
-            Pokemon pok2 = new Pokemon("Tortank", new Caracteristiques(10, 1, 1, 1), ETypeElement.Eau);
-            Pokemon pok3 = new Pokemon("Miaou", new Caracteristiques(520, 8, 1, 1), ETypeElement.Feu);
-            Pokemon pok4 = new Pokemon("Florizarre", new Caracteristiques(250, 5, 5, 5), ETypeElement.Plante);
-            Pokemon pok5 = new Pokemon("PIKACHU", new Caracteristiques(150, 10, 10, 10), ETypeElement.Tonnerre);
-            Pokemon pok6 = new Pokemon("Nidoran", new Caracteristiques(175, 7, 1, 2), ETypeElement.Insecte);
-            Pokemon pok7 = new Pokemon("Roucarnage", new Caracteristiques(350, 2, 1, 2), ETypeElement.Feu);
-            Pokemon pok8 = new Pokemon("Rondoudou", new Caracteristiques(200, 5, 1, 2), ETypeElement.Terre);
-            Pokemon pok9 = new Pokemon("Aspicot", new Caracteristiques(120, 4, 1, 2), ETypeElement.Terre);
-            Pokemon pok10 = new Pokemon("Papilution", new Caracteristiques(125, 3, 1, 2), ETypeElement.Insecte);
-            Pokemon pok11 = new Pokemon("Abra", new Caracteristiques(210, 3, 1, 2), ETypeElement.Plante);
-            Pokemon pok12 = new Pokemon("Lamantine", new Caracteristiques(325, 4, 3, 6), ETypeElement.Eau);
-            Pokemon pok13 = new Pokemon("Onix", new Caracteristiques(110, 5, 1, 2), ETypeElement.Sol);
-            Pokemon pok14 = new Pokemon("Rhinocorne", new Caracteristiques(190, 5, 2, 1), ETypeElement.Sol);
-            Pokemon pok15 = new Pokemon("Evoli", new Caracteristiques(230, 5, 2, 3), ETypeElement.Eau);
-            Pokemon pok16 = new Pokemon("Feurisson", new Caracteristiques(300, 4, 3, 2), ETypeElement.Feu);
+            Pokemon pok1 = new Pokemon("DracoFeu", new Caracteristiques(100, 20, 10, 10), ETypeElement.Feu);
+            Pokemon pok2 = new Pokemon("Tortank", new Caracteristiques(100, 20, 10, 10), ETypeElement.Eau);
+            Pokemon pok3 = new Pokemon("Miaou", new Caracteristiques(520, 80, 10, 10), ETypeElement.Feu);
+            Pokemon pok4 = new Pokemon("Florizarre", new Caracteristiques(250, 50, 30, 50), ETypeElement.Plante);
+            Pokemon pok5 = new Pokemon("PIKACHU", new Caracteristiques(150, 20, 10, 10), ETypeElement.Tonnerre);
+            Pokemon pok6 = new Pokemon("Nidoran", new Caracteristiques(175, 70, 10, 20), ETypeElement.Insecte);
+            Pokemon pok7 = new Pokemon("Roucarnage", new Caracteristiques(350, 20, 10, 20), ETypeElement.Feu);
+            Pokemon pok8 = new Pokemon("Rondoudou", new Caracteristiques(200, 50, 10, 20), ETypeElement.Terre);
+            Pokemon pok9 = new Pokemon("Aspicot", new Caracteristiques(120, 40, 10, 20), ETypeElement.Terre);
+            Pokemon pok10 = new Pokemon("Papilution", new Caracteristiques(125, 30, 10, 20), ETypeElement.Insecte);
+            Pokemon pok11 = new Pokemon("Abra", new Caracteristiques(210, 30, 10, 20), ETypeElement.Plante);
+            Pokemon pok12 = new Pokemon("Lamantine", new Caracteristiques(325, 40, 30, 60), ETypeElement.Eau);
+            Pokemon pok13 = new Pokemon("Onix", new Caracteristiques(110, 50, 10, 20), ETypeElement.Sol);
+            Pokemon pok14 = new Pokemon("Rhinocorne", new Caracteristiques(190, 50, 20, 10), ETypeElement.Sol);
+            Pokemon pok15 = new Pokemon("Evoli", new Caracteristiques(230, 50, 20, 30), ETypeElement.Eau);
+            Pokemon pok16 = new Pokemon("Feurisson", new Caracteristiques(300, 40, 30, 20), ETypeElement.Feu);
             listPkm.Add(pok1);
             listPkm.Add(pok2);
             listPkm.Add(pok3);
