@@ -24,17 +24,12 @@ namespace PokemonTournamentConsole
             Console.WriteLine(stade1);
             Console.WriteLine(stade2);
 
-            Match match1 = new Match(ref pika, ref carapuce);
-            Match match2 = new Match(ref salameche, ref carapuce, EPhaseTournoi.DemiFinale);
-            Match match3 = new Match(new Pokemon("Bulbazar", ETypeElement.Feu), new Pokemon("Lipoutou", ETypeElement.Feu), stade1);
+            Match match1 = new Match(pika, carapuce, stade1, EPhaseTournoi.QuartFinale);
+            Match match2 = new Match(salameche, carapuce, stade2, EPhaseTournoi.DemiFinale);
+            Match match3 = new Match(new Pokemon("Bulbazar", ETypeElement.Feu), new Pokemon("Lipoutou", ETypeElement.Feu), stade1, EPhaseTournoi.Finale);
             Console.WriteLine(match1);
             Console.WriteLine(match2);
             Console.WriteLine(match3);
-
-            Dresseur dresseur1 = new Dresseur("Sacha");
-            Dresseur dresseur2 = new Dresseur("Ondi");
-            Console.WriteLine(dresseur1);
-            Console.WriteLine(dresseur2);
 
             Console.ReadKey();
         }
