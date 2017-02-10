@@ -4,137 +4,121 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EntitiesLayer;
+using System.Windows.Input;
 
 namespace PokemonTournamentWPF.ViewModel
 {
     class StadesVM : ViewModelBase
     {
-        // Event destiné à réclamer la fermeture du conteneur;
-        public event EventHandler<EventArgs> CloseNotified;
-        protected void OnCloseNotified(EventArgs e)
-        {
-            this.CloseNotified(this, e);
-        }
-
-        // Model encapsulé dans le ViewModel
-        private ObservableCollection<StadeVM> mArtistes;
-
-        public ObservableCollection<StadeVM> Stades
-        {
-            get { return mArtistes; }
-            private set
-            {
-                mArtistes = value;
-                OnPropertyChanged("Stades");
-            }
-        }
-
-        private StadeVM _selectedItem;
+        private StadeVM selectedItem;
         public StadeVM SelectedItem
         {
-            get { return _selectedItem; }
+            get { return selectedItem; }
             set
             {
-                _selectedItem = value;
+                selectedItem = value;
                 OnPropertyChanged("SelectedItem");
             }
         }
 
-        public StadesVM(IList<EntitiesLayer.Stade> stadesModel)
+        private ObservableCollection<StadeVM> listeItems;
+        public ObservableCollection<StadeVM> ListeItems
         {
-            mArtistes = new ObservableCollection<StadeVM>();
-            foreach (EntitiesLayer.Stade a in stadesModel)
+            get { return listeItems; }
+            private set
             {
-                mArtistes.Add(new StadeVM(a));
+                listeItems = value;
+                OnPropertyChanged("ListeItems");
             }
         }
 
-        #region "Commandes du formulaire"
+        public StadesVM(List<Stade> stadesList)
+        {
+            SelectedItem = null;
+            ListeItems = new ObservableCollection<StadeVM>();
+            foreach (Stade stade in stadesList)
+                ListeItems.Add(new StadeVM(stade));
+        }
 
         // Commande Add
-        private RelayCommand _addCommand;
-        public System.Windows.Input.ICommand AddCommand
+        private RelayCommand addCommand;
+        public ICommand AddCommand
         {
             get
             {
-                if (_addCommand == null)
+                if (addCommand == null)
                 {
-                    _addCommand = new RelayCommand(
+                    addCommand = new RelayCommand(
                         () => this.Add(),
                         () => this.CanAdd()
                         );
                 }
-                return _addCommand;
+                return addCommand;
             }
         }
-
         private bool CanAdd()
         {
             return true;
         }
-
         private void Add()
         {
-            EntitiesLayer.Stade s = new EntitiesLayer.Stade(0, "<New>");
-
-            this.SelectedItem = new StadeVM(s);
-            Stades.Add(this.SelectedItem);
+            Stade std = new Stade(0, "New");
+            BusinessLayer.BusinessManager.Instance.AddStade(std);
+            ListeItems.Add(new StadeVM(std));
+;            
         }
 
-        // Commande Remove
-        private RelayCommand _removeCommand;
-        public System.Windows.Input.ICommand RemoveCommand
+        // Commande Modify
+        private RelayCommand modifyCommand;
+        public ICommand ModifyCommand
         {
             get
             {
-                if (_removeCommand == null)
+                if (modifyCommand == null)
                 {
-                    _removeCommand = new RelayCommand(
+                    modifyCommand = new RelayCommand(
+                        () => this.Modify(),
+                        () => this.CanModify()
+                        );
+                }
+                return modifyCommand;
+            }
+        }
+        private bool CanModify()
+        {
+            return (SelectedItem != null && SelectedItem.ID != 0);
+        }
+        private void Modify()
+        {
+            BusinessLayer.BusinessManager.Instance.UpdateStade(SelectedItem.Stade);
+        }
+
+        // Commande Remove
+        private RelayCommand removeCommand;
+        public ICommand RemoveCommand
+        {
+            get
+            {
+                if (removeCommand == null)
+                {
+                    removeCommand = new RelayCommand(
                         () => this.Remove(),
                         () => this.CanRemove()
                         );
                 }
-                return _removeCommand;
+                return removeCommand;
             }
         }
-
         private bool CanRemove()
         {
-            return (this.SelectedItem != null);
+            return (SelectedItem != null && SelectedItem.ID != 0);
         }
-
         private void Remove()
         {
-            if (this.SelectedItem != null) Stades.Remove(this.SelectedItem);
+            BusinessLayer.BusinessManager.Instance.DeleteStade(SelectedItem.Stade);
+            ListeItems.Remove(SelectedItem);
+            SelectedItem = null;            
         }
-
-        // Commande Close
-        private RelayCommand _closeCommand;
-        public System.Windows.Input.ICommand CloseCommand
-        {
-            get
-            {
-                if (_closeCommand == null)
-                {
-                    _closeCommand = new RelayCommand(
-                        () => this.Close(),
-                        () => this.CanClose()
-                        );
-                }
-                return _closeCommand;
-            }
-        }
-
-        private bool CanClose()
-        {
-            return true;
-        }
-
-        private void Close()
-        {
-            OnCloseNotified(new EventArgs());
-        }
-
-        #endregion
     }
 }

@@ -7,9 +7,24 @@ using System.Threading.Tasks;
 namespace EntitiesLayer
 {
     public class Stade : EntityObject
-    {    
-        public ETypeElement Element { get; set; }
-        public int NbPlaces { get; set; }
+    {
+        
+        public ETypeElement Element {get; set; }
+
+        private int nbPlaces;
+        public int NbPlaces
+        {
+            get
+            {
+                return nbPlaces;
+            }
+            set
+            {
+                if (value < 0)
+                    nbPlaces = 0;
+                else nbPlaces = value;
+            }
+        }
 
         public Stade(int nbPlace, string nom) : base(nom)
         {

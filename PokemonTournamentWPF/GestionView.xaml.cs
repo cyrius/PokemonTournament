@@ -21,52 +21,14 @@ namespace PokemonTournamentWPF
     /// <summary>
     /// Interaction logic for GestionView.xaml
     /// </summary>
-    public partial class GestionView : Window , INotifyPropertyChanged
+    public partial class GestionView : Window
     {
-
-        BusinessManager businessManager;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private ObservableCollection<EntityObject> listNom;
-        public ObservableCollection<EntityObject> ListNom
-        {
-            get { return listNom; }
-            set
-            {
-                listNom = value;
-                // Call OnPropertyChanged whenever the property is updated
-                OnPropertyChanged("ListNom");
-            }
-        }
+       
 
         public GestionView(BusinessManager manager)
         {
             InitializeComponent();
-            businessManager = manager;
-            this.DataContext = this;
         }
-
-        private void Button_Click_Supprimer(object sender, RoutedEventArgs e)
-        {
-            businessManager.SupprimerEntity((EntityObject) LBEntity.SelectedItem);
-            ListNom.Remove((EntityObject)LBEntity.SelectedItem);
-        }
-
-
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
-        private void LBEntity_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(((ListBox)sender).SelectedItem != null)
-                ((UserControl)container.Children[0]).DataContext = ((ListBox)sender).SelectedItem;
-        }
+       
     }
 }

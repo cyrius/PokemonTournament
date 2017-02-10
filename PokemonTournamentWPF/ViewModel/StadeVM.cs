@@ -21,7 +21,18 @@ namespace PokemonTournamentWPF.ViewModel
         {
             Stade = stade;
         }
-        
+
+        public int ID
+        {
+            get { return mStade.ID; }
+            set
+            {
+                if (value == mStade.ID) return;
+                mStade.ID = value;
+                base.OnPropertyChanged("ID");
+            }
+        }
+
         public string Nom
         {
             get { return mStade.Nom; }
@@ -32,6 +43,7 @@ namespace PokemonTournamentWPF.ViewModel
                 base.OnPropertyChanged("Nom");
             }
         }
+
         public ETypeElement Element
         {
             get { return mStade.Element; }
@@ -42,6 +54,7 @@ namespace PokemonTournamentWPF.ViewModel
                 base.OnPropertyChanged("Element");
             }
         }
+
         public int NbPlaces
         {
             get { return mStade.NbPlaces; }
@@ -52,5 +65,6 @@ namespace PokemonTournamentWPF.ViewModel
                 base.OnPropertyChanged("NbPlaces");
             }
         }
+
     }
 }

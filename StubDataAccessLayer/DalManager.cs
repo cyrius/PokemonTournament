@@ -92,6 +92,74 @@ namespace StubDataAccessLayer
             return listUser.Find(u => u.Login.ToLower() == login.ToLower());
         }
 
-       
+        public Pokemon GetPokemonById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Stade GetStadeById(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Caracteristiques GetCaracteristiqueById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool InsertPokemon(Pokemon pokemon)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool InsertStade(Stade stade)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool InsertCaracteristique(Caracteristiques carac)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool InsertMatch(Match match)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdatePokemon(Pokemon pokemon)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateStade(Stade stade)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateCaracteristique(Caracteristiques carac)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeletePokemon(Pokemon pokemon)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteStade(Stade stade)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteMatch(Match match)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCaracteristique(Caracteristiques carac)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

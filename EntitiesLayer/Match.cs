@@ -13,6 +13,7 @@ namespace EntitiesLayer
         public Pokemon Pokemon1 { get; set; }
         public Pokemon Pokemon2 { get; set; }
         public Stade Stade { get; set; }
+        public int idTournoi { get; set; }
 
         //Obligé de surcharger le constructeur si on veut faire
         // Match match = new Match(new Pokemon(...), new Pokemon(...)) ?

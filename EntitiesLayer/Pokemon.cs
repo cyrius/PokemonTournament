@@ -20,7 +20,7 @@ namespace EntitiesLayer
 
         public Pokemon(string nom, ETypeElement elem) : base(nom)
         {
-            Caracteristiques = null;
+            Caracteristiques = new Caracteristiques(100, 20, 10, 10);
             Type = elem;
         }
 

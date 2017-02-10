@@ -48,88 +48,89 @@ namespace BusinessLayer
             dalManager = new DalManagerSQL();
         }
 
+        #region stades
+
         public List<string> DisplaAllStades()
         {
             return dalManager.GetAllStades().Select(s => s.ToString()).ToList();
         }
 
-        public List<string> DisplaStadesSupPlaces(int placeMin)
+        public List<Stade> GetAllStades()
         {
-            return dalManager.GetAllStades().Where(s => s.NbPlaces >= placeMin ).Select(s => s.ToString()).ToList();
-        }
-
-
-        public List<string> DisplayPokemonBizarre()
-        {
-            return dalManager.GetAllPokemons().Where( p => p.Caracteristiques.PV >= 50 && p.Caracteristiques.Atk >= 3).Select( p => p.ToString()).ToList();
-        }
-
-        public ObservableCollection<EntityObject> GetAllStades()
-        {
-            ObservableCollection<EntityObject> listStadeEntity = new ObservableCollection<EntityObject>();
-            foreach (Stade stade in dalManager.GetAllStades())
-            {
-                listStadeEntity.Add(stade);
-            }
-            return listStadeEntity;
-        }
-
-        public ObservableCollection<EntityObject> GetAllTournois()
-        {
-            ObservableCollection<EntityObject> listTournoisEntity = new ObservableCollection<EntityObject>();
-            foreach (Tournoi tournoi in dalManager.GetAllTournois())
-            {
-                listTournoisEntity.Add(tournoi);
-            }
-            return listTournoisEntity;
+            return dalManager.GetAllStades();
         }
 
         public List<Stade> GetStadesSupPlaces(int placeMin)
         {
             return dalManager.GetAllStades().FindAll(s => s.NbPlaces >= placeMin);
         }
+        
+        public List<string> DisplayStadesSupPlaces(int placeMin)
+        {
+            return dalManager.GetAllStades().Where(s => s.NbPlaces >= placeMin ).Select(s => s.ToString()).ToList();
+        }
 
+        public bool AddStade(Stade stade)
+        {
+            return dalManager.InsertStade(stade);
+        }
+
+        public bool UpdateStade(Stade stade)
+        {
+            return dalManager.UpdateStade(stade);
+        }
+        public void DeleteStade(Stade stade)
+        {
+            dalManager.DeleteStade(stade);
+        }
+
+        #endregion
+
+        #region pokemons
+
+        public List<Pokemon> GetAllPokemons()
+        {
+            return dalManager.GetAllPokemons();
+        }
+
+        public List<string> DisplayPokemonBizarre()
+        {
+            return dalManager.GetAllPokemons().Where( p => p.Caracteristiques.PV >= 50 && p.Caracteristiques.Atk >= 3).Select( p => p.ToString()).ToList();
+        }
 
         public List<Pokemon> GetPokemonBizarre()
         {
             return dalManager.GetAllPokemons().FindAll(p => p.Caracteristiques.PV >= 50 && p.Caracteristiques.Atk >= 3);
         }
 
-        public ObservableCollection<EntityObject> GetAllPokemons()
+        public bool AddPokemon(Pokemon pokemon)
         {
-            ObservableCollection<EntityObject> listPokemonEntity = new ObservableCollection<EntityObject>();
-            foreach (Pokemon pok in dalManager.GetAllPokemons())
-            {
-                listPokemonEntity.Add(pok);
-            }
-            return listPokemonEntity;
+            return dalManager.InsertPokemon(pokemon);
+        }
+        public bool UpdatePokemon(Pokemon pokemon)
+        {
+            return dalManager.UpdatePokemon(pokemon);
+        }
+        public void DeletePokemon(Pokemon pokemon)
+        {
+            dalManager.DeletePokemon(pokemon);
         }
 
-        public ObservableCollection<EntityObject> GetAllMatchs()
+        #endregion
+
+        #region matchs
+
+        public List<Match> GetAllMatchs()
         {
-            ObservableCollection<EntityObject> listMatchEntity = new ObservableCollection<EntityObject>();
-            foreach (Match match in dalManager.GetAllMatchs())
-            {
-                listMatchEntity.Add(match);
-            }
-            return listMatchEntity;
-        }
-        public List<Caracteristiques> GetAllCaracteristique()
-        {
-            return dalManager.GetAllCaracteristiques();
+            return dalManager.GetAllMatchs();
         }
 
+        #endregion
 
-        public void ModifierStade(Stade stade, String nom, int nbPlaces, ETypeElement element)
-        {
-            dalManager.ModifierStade(stade, nom, nbPlaces, element);
-        }
+        #region tournoi
 
-        public void SupprimerEntity(EntityObject aSupprimer)
-        {
-            if (aSupprimer != null)
-                dalManager.SupprimerEntity(aSupprimer.ID);
-        }
+
+        #endregion
 
         public bool CheckConnexionUser(string username, string password)
         {

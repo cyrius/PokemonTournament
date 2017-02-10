@@ -14,6 +14,8 @@ namespace EntitiesLayer
         public int Def { get; set; }
         public int Vitesse { get; set; }
 
+        public int ID { get; set; }
+
         public Caracteristiques(int pv, int atk, int def, int vitesse)
         {
             PV = pv;

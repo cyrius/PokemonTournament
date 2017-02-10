@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PokemonTournamentWPF"
+        xmlns:local="clr-namespace:PokemonTournamentWPF.View"
         mc:Ignorable="d"
         Title="GestionView" Height="500" Width="700"
         WindowStartupLocation="CenterScreen" >
@@ -17,7 +17,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <ListBox Name="LBEntity" ItemsSource="{Binding Path=ListNom}" Height="Auto" Width="Auto" Margin="10" SelectionChanged="LBEntity_SelectionChanged">
+        <ListBox Name="LBEntity" ItemsSource="{Binding ListeItems}" Height="Auto" Width="Auto" Margin="10" Grid.RowSpan="2" SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -26,11 +26,24 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Annuler" Grid.Column="1" Grid.Row="1" Width="120" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30"/>
-        <Button Content="Valider" Visibility="Collapsed" Grid.Column="1" Grid.Row="1" Width="120" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30"/>
-        <Button Content="Supprimer" Grid.Column="1" Grid.Row="1" Width="120" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="30" Click="Button_Click_Supprimer"/>
-        <WrapPanel Grid.Column="1" Grid.Row="0" Name="container">
+
+        <UserControl Name="UCGen" Grid.Column="1" DataContext="{Binding SelectedItem}"/>
+
+        <Grid Grid.Row="1"  Grid.Column="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             
-        </WrapPanel>
+            <Button Name="btnAdd" FontSize="24"  Grid.Column="0" Command="{Binding Path=AddCommand}"
+                Content="Ajouter" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2"/>
+
+            <Button Name="btnModify" FontSize="24"  Grid.Column="1" Command="{Binding Path=ModifyCommand}"
+                Content="Modifier" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2"/>
+
+            <Button Name="btnRemove" FontSize="24"  Grid.Column="2" Command="{Binding Path=RemoveCommand}"
+                Content="Supprimer" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2"/>
+        </Grid>
     </Grid>
 </Window>
