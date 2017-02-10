@@ -33,10 +33,36 @@ namespace StubDataAccessLayer
         {
             Pokemon pok1 = new Pokemon("DracoFeu", new Caracteristiques(10, 1, 1, 1), ETypeElement.Feu);
             Pokemon pok2 = new Pokemon("Tortank", new Caracteristiques(10, 1, 1, 1), ETypeElement.Eau);
+            Pokemon pok3 = new Pokemon("Miaou", new Caracteristiques(520, 8, 1, 1), ETypeElement.Feu);
+            Pokemon pok4 = new Pokemon("Florizarre", new Caracteristiques(250, 5, 5, 5), ETypeElement.Plante);
+            Pokemon pok5 = new Pokemon("PIKACHU", new Caracteristiques(150, 10, 10, 10), ETypeElement.Tonnerre);
+            Pokemon pok6 = new Pokemon("Nidoran", new Caracteristiques(175, 7, 1, 2), ETypeElement.Insecte);
+            Pokemon pok7 = new Pokemon("Roucarnage", new Caracteristiques(350, 2, 1, 2), ETypeElement.Feu);
+            Pokemon pok8 = new Pokemon("Rondoudou", new Caracteristiques(200, 5, 1, 2), ETypeElement.Terre);
+            Pokemon pok9 = new Pokemon("Aspicot", new Caracteristiques(120, 4, 1, 2), ETypeElement.Terre);
+            Pokemon pok10 = new Pokemon("Papilution", new Caracteristiques(125, 3, 1, 2), ETypeElement.Insecte);
+            Pokemon pok11 = new Pokemon("Abra", new Caracteristiques(210, 3, 1, 2), ETypeElement.Plante);
+            Pokemon pok12 = new Pokemon("Lamantine", new Caracteristiques(325, 4, 3, 6), ETypeElement.Eau);
+            Pokemon pok13 = new Pokemon("Onix", new Caracteristiques(110, 5, 1, 2), ETypeElement.Sol);
+            Pokemon pok14 = new Pokemon("Rhinocorne", new Caracteristiques(190, 5, 2, 1), ETypeElement.Sol);
+            Pokemon pok15 = new Pokemon("Evoli", new Caracteristiques(230, 5, 2, 3), ETypeElement.Eau);
+            Pokemon pok16 = new Pokemon("Feurisson", new Caracteristiques(300, 4, 3, 2), ETypeElement.Feu);
             listPkm.Add(pok1);
             listPkm.Add(pok2);
-            listPkm.Add(new Pokemon("Florizarre", new Caracteristiques(10, 5, 5, 5), ETypeElement.Plante));
-            listPkm.Add(new Pokemon("PIKACHU", new Caracteristiques(100, 10, 10, 10), ETypeElement.Terre));
+            listPkm.Add(pok3);
+            listPkm.Add(pok4);
+            listPkm.Add(pok5);
+            listPkm.Add(pok6);
+            listPkm.Add(pok7);
+            listPkm.Add(pok8);
+            listPkm.Add(pok9);
+            listPkm.Add(pok10);
+            listPkm.Add(pok11);
+            listPkm.Add(pok12);
+            listPkm.Add(pok13);
+            listPkm.Add(pok14);
+            listPkm.Add(pok15);
+            listPkm.Add(pok16);
 
             Stade stade1 = new Stade(10000, "HotArena", ETypeElement.Feu);
             listStade.Add(stade1);
