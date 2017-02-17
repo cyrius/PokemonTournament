@@ -8,7 +8,7 @@ namespace EntitiesLayer
 {
     public class EntityObject
     {
-        static private int _compteur = 0;
+        static private int _compteur = 1;
         public int ID { get; set; }
         public string Nom { get; set; }
 

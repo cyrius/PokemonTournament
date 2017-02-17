@@ -121,7 +121,7 @@ namespace StubDataAccessLayer
             {
                 DataRow data = dataTable.Rows[0];
 
-                int nbPlace = Convert.ToInt32(data["NbPlaces"]);
+                int nbPlace = Convert.ToInt32(data["nbPlaces"]);
                 string nom = data["Nom"].ToString();
                 ETypeElement type = (ETypeElement)Convert.ToInt32(data["Element"]);
                 stade = new Stade(nbPlace,nom,type);
@@ -149,12 +149,10 @@ namespace StubDataAccessLayer
                 Pokemon pokemon2 = GetPokemonById(Convert.ToInt32(item["Pokemon2"]));
                 Stade stade = GetStadeById(Convert.ToInt32(item["Stade"]));
                 int idVainqueur = Convert.ToInt32(item["idPokemonVainqueur"]);
-                int idTournoi = Convert.ToInt32(item["idTournoi"]);
 
                 Match match = new Match(pokemon1,pokemon2,stade,phase);
                 match.ID = Convert.ToInt32(item["Id"]);
-                match.idTournoi = idTournoi;
-                match.IdPokemonVainqueur = idVainqueur;
+                match.Vainqueur = GetPokemonById(idVainqueur);
                 listMatch.Add(match);
             }
 
@@ -221,7 +219,7 @@ namespace StubDataAccessLayer
                 using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     sqlConnection.Open();
-                    string sql = "INSERT INTO Stade VALUES(@Nom, @Element, @NbPlaces);  SELECT @@IDENTITY";
+                    string sql = "INSERT INTO Stade VALUES(@Nom, @NbPlaces, @Element);  SELECT @@IDENTITY";
                     SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
                     sqlCommand.Parameters.Add("@Nom", SqlDbType.VarChar, 50).Value = stade.Nom;
                     sqlCommand.Parameters.Add("@Element", SqlDbType.Int).Value = (int)stade.Element;
@@ -277,15 +275,14 @@ namespace StubDataAccessLayer
                 using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     sqlConnection.Open();
-                    string sql = "INSERT INTO Match VALUES(@Nom, @PhaseTournoi, @Pokemon1, @Pokemon2, @Stade, @idPokemonVainqueur, @idTournoi); SELECT @@IDENTITY";
+                    string sql = "INSERT INTO Match VALUES(@Nom, @PhaseTournoi, @IdPokemon1, @IdPokemon2, @IdStade, @idPokemonVainqueur); SELECT @@IDENTITY";
                     SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
                     sqlCommand.Parameters.Add("@Nom", SqlDbType.VarChar, 50).Value = match.Nom;
                     sqlCommand.Parameters.Add("@PhaseTournoi", SqlDbType.Int).Value = (int)match.PhaseTournoi;
                     sqlCommand.Parameters.Add("@IdPokemon1", SqlDbType.Int).Value = match.Pokemon1.ID;
                     sqlCommand.Parameters.Add("@IdPokemon2", SqlDbType.Int).Value = match.Pokemon2.ID;
                     sqlCommand.Parameters.Add("@IdStade", SqlDbType.Int).Value = match.Stade.ID;
-                    sqlCommand.Parameters.Add("@idPokemonVainqueur", SqlDbType.Int).Value = match.IdPokemonVainqueur;
-                    sqlCommand.Parameters.Add("@IdTournoi", SqlDbType.Int).Value = match.idTournoi;
+                    sqlCommand.Parameters.Add("@idPokemonVainqueur", SqlDbType.Int).Value = match.Vainqueur.ID;
                     sqlCommand.CommandType = CommandType.Text;
                     match.ID = Convert.ToInt32(sqlCommand.ExecuteScalar().ToString());
                     sqlConnection.Close();
@@ -362,7 +359,7 @@ namespace StubDataAccessLayer
                 using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     sqlConnection.Open();
-                    string sql = "UPDATE Caracteristique SET PV=@PV, Attaque=@Attaque, Defense=@Defense, Vitesse=@Vitesse WHERE ID=@Id;";
+                    string sql = "UPDATE Caracteristique SET PV=@PV, Atk=@Attaque, Def=@Defense, Vitesse=@Vitesse WHERE ID=@Id;";
                     SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
                     sqlCommand.Parameters.Add("@Id", SqlDbType.Int).Value = carac.ID;
                     sqlCommand.Parameters.Add("@PV", SqlDbType.Int).Value = carac.PV;

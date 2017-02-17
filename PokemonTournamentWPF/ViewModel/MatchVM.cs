@@ -89,14 +89,14 @@ namespace PokemonTournamentWPF.ViewModel
         }
         
 
-        public int IdPokemonVainqueur
+        public Pokemon Vainqueur
         {
-            get { return mMatch.IdPokemonVainqueur; }
+            get { return mMatch.Vainqueur; }
             set
             {
-                if (value == mMatch.IdPokemonVainqueur) return;
-                mMatch.IdPokemonVainqueur = value;
-                base.OnPropertyChanged("IdPokemonVainqueur");
+                if (value == mMatch.Vainqueur) return;
+                mMatch.Vainqueur = value;
+                base.OnPropertyChanged("Vainqueur");
             }
         }
 

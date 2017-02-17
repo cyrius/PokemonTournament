@@ -34,6 +34,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
             <Button Name="btnAdd" FontSize="24"  Grid.Column="0" Command="{Binding Path=AddCommand}"
@@ -44,6 +45,9 @@
 
             <Button Name="btnRemove" FontSize="24"  Grid.Column="2" Command="{Binding Path=RemoveCommand}"
                 Content="Supprimer" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2"/>
+
+            <Button Name="btnExport" FontSize="24"  Grid.Column="3" Command="{Binding Path=ExportCommand}"
+                Content="Export" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2"/>
         </Grid>
     </Grid>
 </Window>

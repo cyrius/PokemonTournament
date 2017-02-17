@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using EntitiesLayer;
 using System.Windows.Input;
+using System.Xml.Serialization;
+using System.Windows.Forms;
+using System.IO;
 
 namespace PokemonTournamentWPF.ViewModel
 {
@@ -67,6 +70,45 @@ namespace PokemonTournamentWPF.ViewModel
             BusinessLayer.BusinessManager.Instance.AddStade(std);
             ListeItems.Add(new StadeVM(std));
 ;            
+        }
+
+        // Commande Export
+        private RelayCommand exportCommand;
+        public ICommand ExportCommand
+        {
+            get
+            {
+                if (exportCommand == null)
+                {
+                    exportCommand = new RelayCommand(
+                        () => this.Export(),
+                        () => this.CanExport()
+                        );
+                }
+                return exportCommand;
+            }
+        }
+        private bool CanExport()
+        {
+            return true;
+        }
+        private void Export()
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(List<Stade>));
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = "Stades_Export";
+            List<Stade> tmp_list = new List<Stade>();
+            foreach (StadeVM p in ListeItems)
+            {
+                tmp_list.Add(p.Stade);
+            }
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(save.FileName, FileMode.Create))
+                {
+                    ser.Serialize(fs, tmp_list);
+                }
+            }
         }
 
         // Commande Modify

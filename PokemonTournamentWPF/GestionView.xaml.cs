@@ -23,8 +23,6 @@ namespace PokemonTournamentWPF
     /// </summary>
     public partial class GestionView : Window
     {
-       
-
         public GestionView(BusinessManager manager)
         {
             InitializeComponent();

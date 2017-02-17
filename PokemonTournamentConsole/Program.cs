@@ -27,6 +27,9 @@ namespace PokemonTournamentConsole
             Match match1 = new Match(pika, carapuce, stade1, EPhaseTournoi.QuartFinale);
             Match match2 = new Match(salameche, carapuce, stade2, EPhaseTournoi.DemiFinale);
             Match match3 = new Match(new Pokemon("Bulbazar", ETypeElement.Feu), new Pokemon("Lipoutou", ETypeElement.Feu), stade1, EPhaseTournoi.Finale);
+            match1.JouerMatch();
+            match2.JouerMatch();
+            match3.JouerMatch();
             Console.WriteLine(match1);
             Console.WriteLine(match2);
             Console.WriteLine(match3);

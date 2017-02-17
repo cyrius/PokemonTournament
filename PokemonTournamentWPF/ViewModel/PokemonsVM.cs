@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EntitiesLayer;
 using System.Windows.Input;
+using System.Xml.Serialization;
+using System.IO;
+using System.Windows.Forms;
 
 namespace PokemonTournamentWPF.ViewModel
 {
@@ -65,7 +64,46 @@ namespace PokemonTournamentWPF.ViewModel
         {
             Pokemon pok = new Pokemon("New", ETypeElement.Aucun);
             BusinessLayer.BusinessManager.Instance.AddPokemon(pok);
-            ListeItems.Add(new PokemonVM(pok));            
+            ListeItems.Add(new PokemonVM(pok));
+        }
+
+        // Commande Export
+        private RelayCommand exportCommand;
+        public ICommand ExportCommand
+        {
+            get
+            {
+                if (exportCommand == null)
+                {
+                    exportCommand = new RelayCommand(
+                        () => this.Export(),
+                        () => this.CanExport()
+                        );
+                }
+                return exportCommand;
+            }
+        }
+        private bool CanExport()
+        {
+            return true;
+        }
+        private void Export()
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(List<Pokemon>));
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = "Pokemons_Export";
+            List<Pokemon> tmp_list = new List<Pokemon>();
+            foreach (PokemonVM p in ListeItems)
+            {
+                tmp_list.Add(p.Pokemon);
+            }
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(save.FileName, FileMode.Create))
+                {
+                    ser.Serialize(fs, tmp_list);
+                }
+            }
         }
 
         // Commande Modify

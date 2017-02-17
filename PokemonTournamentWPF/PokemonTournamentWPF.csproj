@@ -37,6 +37,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GestTournoi.xaml.cs">
+      <DependentUpon>GestTournoi.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\MatchsVM.cs" />
     <Compile Include="ViewModel\MatchVM.cs" />
     <Compile Include="ViewModel\PokemonsVM.cs" />
@@ -72,11 +78,11 @@
     <Compile Include="View\UCStade.xaml.cs">
       <DependentUpon>UCStade.xaml</DependentUpon>
     </Compile>
-    <Page Include="AjouterStade.xaml">
+    <Page Include="GestionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GestionView.xaml">
+    <Page Include="GestTournoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,9 +90,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AjouterStade.xaml.cs">
-      <DependentUpon>AjouterStade.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -18,6 +18,7 @@ namespace EntitiesLayer
             Type = type;
         }
 
+        public Pokemon() : base("vide") { }
         public Pokemon(string nom, ETypeElement elem) : base(nom)
         {
             Caracteristiques = new Caracteristiques(100, 20, 10, 10);

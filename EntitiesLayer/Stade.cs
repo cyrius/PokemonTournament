@@ -26,6 +26,7 @@ namespace EntitiesLayer
             }
         }
 
+        public Stade() : base("vide") { }
         public Stade(int nbPlace, string nom) : base(nom)
         {
             Element = ETypeElement.Aucun;

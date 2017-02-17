@@ -5,7 +5,7 @@ using System.Drawing.Printing;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace PokemonBusiness
+namespace BusinessLayer
 {
     class Item{
         public string Font { get; set; }

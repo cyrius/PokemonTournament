@@ -14,6 +14,8 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -22,8 +24,10 @@
         <Button Grid.Row="0" Grid.ColumnSpan="2" Content="Gestion des Stades" Click="Gestion_Click" Name="btn_GestStades"/>
         <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Gestion des Pokemon" Click="Gestion_Click" Name="btn_GestPokemon"/>
         <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Gestion des Matches" Click="Gestion_Click" Name="btn_GestMatch"/>
-        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Lancer le Tournoi" Click="Gestion_Click" Name="btn_lancer"/>
-        <Button Grid.Row="4" Content="DAL Stub" Click="btn_Dal_Click" Name="btn_DalStub"  IsEnabled="False"/>
-        <Button Grid.Row="4" Grid.Column="1" Content="DAL SQL" Click="btn_Dal_Click" Name="btn_DalSQL"/>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Bonus" Click="Gestion_Click" Name="btn_bonus"/>
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Imprimer" Click="Gestion_Click" Name="btn_imprimer"/>
+        <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Lancer le Tournoi" Click="Tournoi_Click" Name="btn_lancer"/>
+        <Button Grid.Row="6" Content="DAL Stub" Click="btn_Dal_Click" Name="btn_DalStub"  IsEnabled="False"/>
+        <Button Grid.Row="6" Grid.Column="1" Content="DAL SQL" Click="btn_Dal_Click" Name="btn_DalSQL"/>
     </Grid>
 </Window>

@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using BusinessLayer;
 using EntitiesLayer;
 using System.Collections.ObjectModel;
+using System.Drawing.Printing;
 
 namespace PokemonTournamentWPF
 {
@@ -52,22 +53,54 @@ namespace PokemonTournamentWPF
                 case "btn_GestStades":
                     gestionView.DataContext = new ViewModel.StadesVM(BusinessManager.Instance.GetAllStades());
                     gestionView.UCGen.Content = new View.UCStade();
+                    gestionView.Show();
                     break;
                 case "btn_GestPokemon":
                     gestionView.DataContext = new ViewModel.PokemonsVM(BusinessManager.Instance.GetAllPokemons());
                     gestionView.UCGen.Content = new View.UCPokemon();
+                    gestionView.Show();
                     break;
                 case "btn_GestMatch":
                     gestionView.DataContext = new ViewModel.MatchsVM(BusinessManager.Instance.GetAllMatchs());
                     gestionView.UCGen.Content = new View.UCMatch();
-                    break;             
-
+                    gestionView.Show();
+                    break;
+                case "btn_bonus":
+                    gestionView.DataContext = new ViewModel.PokemonsVM(BusinessManager.Instance.GetPokemonBizarre());
+                    gestionView.UCGen.Content = new View.UCPokemon();
+                    gestionView.Show();
+                    break;
+                case "btn_imprimer":
+                    PrintDialog print = new PrintDialog();
+                    if (print.ShowDialog()==true)
+                    {
+                        var p = print.PrintQueue.FullName;
+                        StringBuilder Impression = new StringBuilder();
+                        List<Pokemon> listpoke = BusinessManager.Instance.GetAllPokemons();
+                        List<Stade> liststade = BusinessManager.Instance.GetAllStades();
+                        Impression.Append("Pokemon :\n\n");
+                        foreach(Pokemon poke in listpoke){
+                            Impression.Append(poke.Nom + "\n");
+                        }
+                        Impression.Append("\n\nStades :\n\n");
+                        foreach (Stade stade in liststade)
+                        {
+                            Impression.Append(stade.Nom + "\n");
+                        }
+                        PokemonPrinter printer = new PokemonPrinter(p, "config.json", Impression.ToString());
+                        printer.Print();
+                    }
+                    break;
                 default:
                     break;
-            }
-           
-            gestionView.Show();
+            }           
         }
+        private void Tournoi_Click(object sender, RoutedEventArgs e)
+        {
+            GestTournoi gt = new PokemonTournamentWPF.GestTournoi();
+            gt.Show();
+        }
+
 
         private void Window_Closed(object sender, EventArgs e)
         {

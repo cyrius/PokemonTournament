@@ -10,33 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EntitiesLayer;
 using BusinessLayer;
 
 namespace PokemonTournamentWPF
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour GestTournoi.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class GestTournoi : Window
     {
-        public Login()
+        Tournoi tournoi;
+        
+        public GestTournoi()
         {
             InitializeComponent();
-        }
-
-        private void BtnLogin_Click(object sender, RoutedEventArgs e)
-        {
-
-            if( BusinessManager.Instance.CheckConnexionUser(TBLogin.Text, TBPassword.Password))
+            tournoi = new Tournoi("Tournoi", BusinessManager.Instance.GetAllStades(), BusinessManager.Instance.GetAllPokemons(), 16);
+            tournoi.JouerTournoi();
+            foreach (Match m in tournoi.Matchs)
             {
-
-                Manager manager = new Manager();
-                manager.Show();
-
-                this.Close();
+                BusinessManager.Instance.AddMatch(m);
             }
+            this.DataContext = tournoi;
         }
     }
 }

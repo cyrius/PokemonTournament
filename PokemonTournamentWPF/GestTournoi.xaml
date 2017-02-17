@@ -1,0 +1,54 @@
+﻿<Window x:Class="PokemonTournamentWPF.GestTournoi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PokemonTournamentWPF"
+        mc:Ignorable="d"
+        Title="GestTournoi" Height="800" Width="1000">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Nom du tournoi :" FontSize="24" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+        <TextBox x:Name="txtName" Text="{Binding Nom, UpdateSourceTrigger=PropertyChanged}" FontSize="24" Grid.Column="1" Grid.Row="0" Width="250" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Pokemons" FontSize="24" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <DataGrid Grid.Column="0" Grid.Row="2" ItemsSource="{Binding Pokemons}" IsReadOnly="True" FontSize="16" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="PV" Binding="{Binding Caracteristiques.PV}"/>
+                <DataGridTextColumn Header="Attaque" Binding="{Binding Caracteristiques.Atk}"/>
+                <DataGridTextColumn Header="Defense" Binding="{Binding Caracteristiques.Def}"/>
+                <DataGridTextColumn Header="Vitesse" Binding="{Binding Caracteristiques.Vitesse}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Text="Stades" FontSize="24" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <DataGrid Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Stades}" IsReadOnly="True" FontSize="16" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Element}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding Matchs}" IsReadOnly="True" FontSize="16" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
+                <DataGridTextColumn Header="Vainqueur" Binding="{Binding Vainqueur.Nom}"/>
+                <DataGridTextColumn Header="Phase" Binding="{Binding PhaseTournoi}"/>
+                <DataGridTextColumn Header="Stade" Binding="{Binding Stade.Nom}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
